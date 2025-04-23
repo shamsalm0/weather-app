@@ -11,7 +11,7 @@ const Header = () => {
         <div className='sticky z-50 py-2 top-0 border-b w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60'>
             <div className='mx-auto container flex justify-between items-center h-16 px-4'>
                <Link to="/">
-               <img src="/public/logo.jpg" className='h-14' alt="" srcset="" />
+               <img src="/public/logo.jpg" className='h-14' alt="" />
                </Link>
                <div onClick={()=> setTheme(dark? "light" : "dark")} className={`flex items-center cursor-pointer transition-transform duration-500 ${dark ? `rotate-180`:`rotate-0`}`}>
                 {

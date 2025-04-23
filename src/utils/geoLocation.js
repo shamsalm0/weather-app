@@ -19,10 +19,6 @@ export function useGeoLocation() {
             });
             return;
         }
-
-    
-
-        // Fetch location
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 setLocationData({
@@ -64,11 +60,16 @@ export function useGeoLocation() {
         );
     };
 
+
+    
+
+        // Fetch location
+   
     // useEffect to call getLocation on component mount
     useEffect(() => {
         getLocation();
         console.log(locationData)
     }, []); // Empty dependency array ensures it runs only once
 
-    return locationData; // Return the state
+    return {...locationData,getLocation}; // Return the state
 }
