@@ -60,6 +60,14 @@ class WeatherAPI {
         console.log(url, "url")
         return this.#fetchedData(url);
     }
+
+    async getLocationSearch(query) {
+        const url = this.#createURL(`${api_config.GEO}/direct`, {
+            q: query,
+            limit: 1
+        })
+        return this.#fetchedData(url);
+    }
 }
 console.log("base url", api_config.BASE_URL)
 const weather = new WeatherAPI();

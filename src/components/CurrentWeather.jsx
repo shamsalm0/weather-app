@@ -27,14 +27,22 @@ const CurrentWeather = ({ data, location, selectedWeather }) => {
         setIsCelsius(!isCelsius);
     };
 
-    const temperature = isCelsius
-        ? displayValue !== null
-            ? `${Math.round(displayValue)}°C`
-            : "N/A"
-        : displayValue !== null
-            ? `${Math.round(displayValue * 9 / 5 + 32)}°F`
-            : "N/A";
+    let display = "N/A";
 
+    if (displayValue !== null) {
+        if (selectedWeather.temp || selectedWeather.feels_like) {
+            display = isCelsius
+                ? `${Math.round(displayValue)}°C`
+                : `${Math.round(displayValue * 9 / 5 + 32)}°F`;
+        } else if (selectedWeather.wind) {
+            display = `${displayValue} m/s`;
+        } else if (selectedWeather.humidity) {
+            display = `${displayValue}%`;
+        } else if (selectedWeather.pressure) {
+            display = `${displayValue} hPa`;
+        }
+    }
+    
     // Format sunrise and sunset times
     const sunrise = new Date(data?.sys?.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     const sunset = new Date(data?.sys?.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -58,7 +66,7 @@ const CurrentWeather = ({ data, location, selectedWeather }) => {
 
                 <CardContent className="flex flex-col items-center justify-center space-y-6">
                     <div className="text-5xl font-extrabold text-gray-800">
-                        {temperature}
+                        {display}
                     </div>
 
                     {/* Weather condition icons */}

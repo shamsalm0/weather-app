@@ -1,5 +1,5 @@
+import { dateFormat } from '@/utils/common';
 import React, { useState } from 'react'
-
 const ForecastAccordion = ({forecastData}) => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -17,7 +17,7 @@ const ForecastAccordion = ({forecastData}) => {
                 <div className="mt-4 grid grid-cols-7 gap-4">
                     {forecastData.slice(0,7)?.map((forecast, index) => (
                         <div key={index} className="flex flex-col items-center border rounded-md p-3 bg-gray-200/60 backdrop-blur-md">
-                            <p className="text-lg font-bold">{forecast.dt_txt}</p>
+                            <p className="text-lg font-bold">{dateFormat(forecast.dt_txt)}</p>
                             <div className="text-2xl">{forecast.main.temp}°C</div>
                             <div>{forecast?.weather[0]?.main}</div>
                         </div>

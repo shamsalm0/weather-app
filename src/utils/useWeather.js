@@ -6,7 +6,8 @@ import { useEffect, useState } from "react"
 export const WEATHER_KEYS = {
     weather:(coords)=>["weather",coords] ,
     forecast:(coords)=>["forecast",coords],
-    geocode:(coords)=>["georeverse",coords]
+    geocode:(coords)=>["georeverse",coords],
+    search:(query)=>["location-search",query]
 }
 export const useWeatherQuery = (coordinates) =>{
        return useQuery({
@@ -44,5 +45,12 @@ export const useReverseGeocodeQuery = (coordinates) =>{
      queryFn: ()=>coordinates? weatherAPI.getReverseGeoCode(coordinates):null,
      enabled: !!coordinates
     })
-    
+}
+
+export const useLocationSearchQuery = (query) =>{
+    return useQuery({
+     queryKey:WEATHER_KEYS.search(query ?? ""),
+     queryFn: ()=>query? weatherAPI.getLocationSearch(query):null,
+     enabled: !!query
+    })
 }
