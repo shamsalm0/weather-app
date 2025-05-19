@@ -9,7 +9,7 @@ const ForecastAccordion = ({forecastData}) => {
 
     return (
         <div className="mt-6 p-4">
-            <button onClick={toggleAccordion} className="w-full text-left bg-gray-200 p-4 rounded-lg shadow-md">
+            <button onClick={toggleAccordion} className="w-full text-left bg-gray-200 dark:bg-gray-800 p-4 rounded-lg shadow-md">
                 <h3 className="text-xl font-semibold text-center">Next 7 Days Forecast</h3>
             </button>
 
