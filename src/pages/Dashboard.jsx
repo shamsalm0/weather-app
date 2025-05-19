@@ -138,6 +138,7 @@ const Dashboard = () => {
                         value={searchInput}
                     />
                     
+                    
                     <Button variant="outline" size="icon" onClick={handleRefresh} disabled={weatherQuery.isFetching}>
                         <RefreshCw className={`h-4 w-4 ${weatherQuery.isFetching ? 'animate-spin' : ''}`} />
                     </Button>
